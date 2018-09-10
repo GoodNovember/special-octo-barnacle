@@ -1,0 +1,15 @@
+{
+  "name": "special-octo-barnacle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": "git@github.com:GoodNovember/special-octo-barnacle.git",
+  "author": "Victor Lawrence <VictorLawrenceCode@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.9.7"
+  }
+}
