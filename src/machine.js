@@ -1,7 +1,7 @@
 import React from "react"
 import { render } from "react-dom"
 import { App } from "./components/App.jsx"
-import { BEM } from "./util/bem"
+import { BEM } from "./util/BEM"
 
 const ROOT = document.getElementById('root')
 
