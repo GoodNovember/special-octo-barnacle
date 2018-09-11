@@ -7,7 +7,6 @@ const ROOT = document.getElementById('root')
 
 const App2 = ()=>{
 
-
 	const block = 'spaceship'
 
 	return (
