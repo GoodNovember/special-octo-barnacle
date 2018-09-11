@@ -5,6 +5,8 @@ import React from "react"
 import { BEM } from "../util/BEM"
 import { Background } from "./Background.component"
 
+import {Block, Element} from "../util/BEM2"
+
 const blockName = "island"
 
 export const Island = ({children, logo, position, bgSrc}) => (
