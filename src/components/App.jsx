@@ -30,6 +30,7 @@ const GLOBAL_BLOCK = "app-root"
 export class App extends Component{
 	constructor(props){
 		super(props)
+		this.scrollBox = React.createRef()
 	}
 	componentDidMount(){
 		this.unsubscribe = store.subscribe(()=>{
@@ -50,6 +51,14 @@ export class App extends Component{
 		const state = store.getState()
 		const { pathname } = state.history
 
+		const { scrollBox } = this
+
+		const scrollElement = scrollBox.current
+
+		if(scrollElement){
+			console.log(scrollElement)
+		}
+
 		return (
 			<Provider store={ store }>
 				<BEM block={GLOBAL_BLOCK}>
@@ -65,7 +74,7 @@ export class App extends Component{
 							<NavigationButton linkTo="/donate">Donate Today!</NavigationButton>
 						</NavigationSection>
 					</Navigation>
-					<BEM block={GLOBAL_BLOCK} element="scroll-box">
+					<BEM ref={ scrollBox } block={GLOBAL_BLOCK} element="scroll-box">
 						<MainContent>
 							<PageRouter pathname={pathname}/>
 						</MainContent>
