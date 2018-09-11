@@ -1,5 +1,8 @@
 @import "../colors";
 
+$bottomNavBreakWidth : 64rem;
+$bottomSectionWidth : 10rem;
+
 .navigation{
 	display: flex;
 	&__logo{
@@ -55,6 +58,7 @@
 		}
 		.navigation__section{
 			background: rgba(255,255,255,.4);
+			width: 14rem;
 		}
 		.navigation__item{
 			color:rgba(0,0,0,.75);
@@ -79,29 +83,14 @@
 		flex-grow: 1;
 	}
 	&__section{
-		margin: 1em;
+		margin: 1rem;
 		border: 1px solid rgba(0,0,0,.2);
 		box-shadow: 0 0 2em rgba(0,0,0,.2);
 		display: flex;
-		width: 10rem;
+		width: $bottomSectionWidth;
 		flex-grow: 1;
 		flex-shrink: 0;
 		flex-direction: column;
-		@media screen and (max-width:60rem){
-			flex-basis: 40%;
-			width:auto;
-		}
-		&-title{
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: .5rem;
-			font-size: 1.25em;
-			text-align: center;
-			border-bottom: 1px solid rgba(0,0,0,.2);
-			min-height: 3em;
-			background: rgba(255,255,255,.5);
-		}
 		& .navigation__item{
 			padding:.5rem 1rem;
 			text-align: center;
@@ -111,6 +100,17 @@
 				background: rgba(255,255,255,.7);
 			}
 		}
+	}
+	&__section-title{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: .5rem;
+		font-size: 1.25em;
+		text-align: center;
+		border-bottom: 1px solid rgba(0,0,0,.2);
+		min-height: 3em;
+		background: rgba(255,255,255,.5);
 	}
 	&__item{
 		padding:1em;
@@ -128,15 +128,24 @@
 			width: 100%;
 		}
 		&--type-bottom{
-			max-width: 60rem;
+			max-width: $bottomNavBreakWidth;
 			flex-shrink: 1;
 			flex-grow: 1;
-			@media screen and (max-width:60rem){
+			width: 100%;
+			align-items: stretch;
+			justify-content: center;
+			margin-bottom: 1rem;
+			@media screen and (max-width:$bottomNavBreakWidth){
 				flex-wrap: wrap;
-			}
-			@media screen and (max-width:40rem){
-				flex-wrap: wrap;
-				flex-direction: column;
+				justify-content: center;
+				.navigation__section{
+					margin: 1rem auto;
+					margin-bottom: 0;
+					flex-shrink: 1;
+					margin-left: 1rem;
+					margin-right: 1rem;
+					max-width: $bottomSectionWidth*2;
+				}
 			}
 		}
 		

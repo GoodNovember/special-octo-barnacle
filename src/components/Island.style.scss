@@ -38,6 +38,9 @@
 		align-items: center;
 		display: flex;
 		padding: 3rem;
+		@media screen and (max-width:50rem){
+			padding: 5vw;
+		}
 	}
 
 	&__caption{
