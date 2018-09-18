@@ -25,6 +25,8 @@ import { PageLink as EducationPageLink } from "../pages/EducationPage"
 import { PageLink as IvesterPageLink } from "../pages/IvesterFoundationPage"
 import { PageLink as CottrellPageLink } from "../pages/CottrellDigitalStudioPage"
 
+import { findDOMNode } from "react-dom"
+
 const GLOBAL_BLOCK = "app-root"
 
 export class App extends Component{
@@ -46,18 +48,18 @@ export class App extends Component{
 	componentWillUnmount(){
 		this.unsubscribe()
 	}
+	componentDidUpdate(){
+		// when we go to a new page reset the scroll of the main scrolling element
+		const scrollElm = findDOMNode(this.scrollBox.current)
+		if(scrollElm.scrollTop > 0){
+			scrollElm.scrollTop = 0
+		}
+	}
 	render(){
 
 		const state = store.getState()
 		const { pathname } = state.history
-
 		const { scrollBox } = this
-
-		const scrollElement = scrollBox.current
-
-		if(scrollElement){
-			console.log(scrollElement)
-		}
 
 		return (
 			<Provider store={ store }>
