@@ -27,10 +27,13 @@ class InternalScrollBox extends Component{
 		const { knownPath } = state
 		const domElm = findDOMNode(elm.current)
 		if(knownPath !== pathname){
-			if(domElm.scrollTop > 0){
+			// if(domElm.scrollTop > 0){
+			// 	domElm.scrollTop = 0
+			// }
+			this.setState({knownPath:pathname},()=>{
+				console.log("SCROLL", domElm)
 				domElm.scrollTop = 0
-			}
-			this.setState({knownPath:pathname})
+			})
 		}
 	}
 	render(){ return ( <BEM block={'scroll-box'} { ...this.props } ref={ this.elm } /> ) }

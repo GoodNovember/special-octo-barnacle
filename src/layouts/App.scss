@@ -1,9 +1,5 @@
 .app-root{
 	display: flex;
 	flex-direction: column;
-	&__scroll-box{
-		overflow: auto;
-		flex-grow: 1;
-	}
 	height: 100vh;
 }
