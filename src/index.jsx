@@ -1,4 +1,7 @@
-import { render } from "react-dom"
 import React from "react"
-import {App} from "./layout/App"
-render(<App/>,document.getElementById('root'))
+import { render } from "react-dom"
+import { App } from "./layouts/App"
+import { store } from "./store/"
+import { Provider } from "react-redux"
+
+render(<Provider store={store}><App/></Provider>, document.getElementById('root'))

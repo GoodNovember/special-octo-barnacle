@@ -1,0 +1,1 @@
+export const REGISTER_PATH = `history-museum/router/REGISTER_PATH`

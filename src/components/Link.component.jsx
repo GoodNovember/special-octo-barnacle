@@ -6,12 +6,7 @@ import { createBEM } from "../util/createBEM"
 
 const block = 'link'
 
-import { store } from "../store"
-import { history } from "../history"
-
-export const makePageLink = ( route ) => (props) => ( <Link {...props} to={route}/> )
-
-export const makeLinkTo = ( route ) => (props) => ( <Link {...props} to={route}/> )
+import { history } from "../history/duck"
 
 export const Link = ({ className, type, to, isActive, elm, ...props })=>{
 	const modifier = {}
@@ -33,3 +28,7 @@ export const Link = ({ className, type, to, isActive, elm, ...props })=>{
 		<SubElm {...props}/>
 	)
 }
+
+export const makePageLink = ( route ) => ( props ) => ( <Link {...props} to={ route }/> )
+
+export const makeLinkTo = ( route ) => ( props ) => ( <Link {...props} to={ route }/> )

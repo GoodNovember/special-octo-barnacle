@@ -1,17 +1,19 @@
 import { createStore, combineReducers } from "redux"
-import { historyReducer, history } from "../history"
-import { routerReducer, registerPages } from "../router"
+import historyReducer, { history, SetPathname } from "../history/duck"
+import routesReducer, { MakeRegisterPathBatch } from "../router/duck"
 
 import * as PAGES from "../pages"
 
 const masterReducer = combineReducers({
 	history:historyReducer,
-	router:routerReducer,
+	routes:routesReducer,
 })
 
 export const store = createStore(masterReducer)
 
-const SetHistoryPathname = (pathname) => store.dispatch({type:'[history] set-pathname', payload:pathname})
+const {dispatch} = store
+
+const SetHistoryPathname = (pathname) => dispatch(SetPathname(pathname))
 
 const ignoreHistoryUpdates = history.listen((location)=>{ 
 	SetHistoryPathname(location.pathname)
@@ -21,5 +23,5 @@ SetHistoryPathname(history.location.pathname)
 
 // this is to help ensure we only register the pages once and only once.
 window.addEventListener("load",()=>{
-	registerPages(PAGES)
+	MakeRegisterPathBatch(PAGES).map(action=>store.dispatch(action))
 })
