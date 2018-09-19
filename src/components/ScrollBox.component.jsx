@@ -17,22 +17,18 @@ class InternalScrollBox extends Component{
 	constructor(props){
 		super(props)
 		this.elm = createRef()
-		this.state = {
-			knownPath:null
-		}
+		this.state = { knownPath:null }
 	}
 	componentDidUpdate(){
 		const { props, state, elm } = this
 		const { pathname } = props
 		const { knownPath } = state
-		const domElm = findDOMNode(elm.current)
-		if(knownPath !== pathname){
-			// if(domElm.scrollTop > 0){
-			// 	domElm.scrollTop = 0
-			// }
+		const domElm = findDOMNode( elm.current )
+		if( knownPath !== pathname ){
 			this.setState({knownPath:pathname},()=>{
-				console.log("SCROLL", domElm)
-				domElm.scrollTop = 0
+				if(domElm.scrollTop !== 0){
+					domElm.scrollTop = 0
+				}
 			})
 		}
 	}
